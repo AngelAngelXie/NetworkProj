@@ -825,6 +825,7 @@ int main() {
 
 		printf("\nInput command: ");
 		scanf("%s", command);
+		printf("Received command is: %s\n", command);
 
 		if (strncmp(command, REGISTER, strlen(REGISTER)) == 0) {
 			send_register(sockfd, servaddr, ip, port);
