@@ -254,7 +254,10 @@ int check_timeout(long long now, struct rdt3_sender_ctx *ctx_head, int sockfd) {
 			clientaddr.sin_port = htons(current->port);
 
 			memset(clientaddr. sin_zero, '\0', sizeof(clientaddr.sin_zero));
+			// resend the packet
 			send_return(sockfd, clientaddr, current->file_idx, current->noack_node, current->noack_num);
+			// update the timer
+			current->clock = now;
 		}
 		/***********************************************
 		 * END OF YOUR CODE
